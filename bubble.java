@@ -10,7 +10,7 @@
 
 --> 8
 
-플레이어가 출발했을 때 탈출이 불가능한 공간 크기의 총 합을 구한다
+플레이어가 출발했을 때 탈출이 불가능한 공간 크기의 총 합
 
 
 */
@@ -62,7 +62,7 @@ public class Main {
 		
 		int []space = new int[N-1];
 		int spc = 0;
-		int impsbl = 0;
+		int imp_area = 0;
 				
 		for (int i=0; i<N;i++) {
 			bb[i] = new bubble(S[i], P[i]);			
@@ -75,24 +75,29 @@ public class Main {
 		
 		for (int i=0; i<N-1; i++) {
 			space[i]=bb[i+1].pos-bb[i].pos;
-		}
-		
+		}		
 		spc = space[0];
-		if (spc > bb[0].size) {
-			// escape! so do not count
-		} else if (space[0]> bb[1].size) {
-			spc = space[0];
-			impsbl 
+		
+		if (spc < bb[0].size && spc < bb[1].size) {
+			imp_area += spc;
+		}  
+		if (spc > bb[1].size) {
+			spc += space[1];
+		}
+		if (spc > bb[1].size) {
+			spc += space[1];
 		}
 		
 		
 		
+	/*		
+		if (space[N-2]> bb[N-1].size) {
 			
-		if (space[n-2]> bb[n-1].size) {
-			// escape! so do not count
 		}
-		
-		
+	*/	
+		for (int i=0; i < N-1; i++) {
+			System.out.printf("space[%d]=%d\n",i, space[i]);
+		}
 		
 		
 		
